@@ -41,3 +41,4 @@ docs: READMEの更新
 member-list
 杉田
 北山
+赤地礼音

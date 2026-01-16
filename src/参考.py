@@ -26,6 +26,7 @@ num = 5
 
 num = 60
 
+num = 5
 for i in range(num):
     generat(movie_dir, width, height, i)
     print(i+1,num)
