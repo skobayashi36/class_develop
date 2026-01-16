@@ -14,9 +14,9 @@ class PathManagement:
         return new_path
     
     def make_dir(self, path):
-        #新たなディレクトリを作成する処理(未記入)
-        #すでにフォルダが存在する場合は何もしない
-        pass
+        # pathを引数にディレクトリを作成する(既に存在する場合は作成しない)
+        pathlib.Path(path).mkdir(parents=True, exist_ok=True)
+
 
 
 #===========以下デバッグ用===================
@@ -36,3 +36,6 @@ if __name__ == "__main__":
     str_new_path = str(new_path)
     #typeがstrとなっており、柔軟な操作ができない代わりに様々なライブラリがこの変数をPCのパスとして読み込むことができる
     print(str_new_path, type(str_new_path))
+
+    #ディレクトリ(フォルダ)作成
+    path_manage_obj.make_dir()
