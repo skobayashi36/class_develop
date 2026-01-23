@@ -22,10 +22,6 @@ class RGB(namedtuple('RGB', ['r', 'g', 'b'], defaults=[0, 0, 0])):
             v3 += rgb[2]
         return (v1, v2, v3)
 
-    def mix(self, *other):
-        #RGB型同士で各値を平均する(色を混ぜる) 各値の最大値は255
-        pass
-
 
 class ImageWork:
     
