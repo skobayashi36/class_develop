@@ -25,7 +25,9 @@ class RGB(namedtuple('RGB', ['r', 'g', 'b'], defaults=[0, 0, 0])):
 
 class ImageWork:
     
-    def __init__(self) -> None:
+    def __init__(self,matrix, shape) -> None:
+        self.matrix = matrix
+        self.shape = shape
         #行, 列 を引数にとり、matrixを初期化する。 shapeに行数と列数を記録する
         pass
 
