@@ -38,4 +38,4 @@ if __name__ == "__main__":
     print(str_new_path, type(str_new_path))
 
     #ディレクトリ(フォルダ)作成
-    path_manage_obj.make_dir()
+    #path_manage_obj.make_dir()

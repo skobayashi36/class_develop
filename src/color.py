@@ -3,6 +3,7 @@
 """
 from collections import namedtuple
 from PIL import Image
+import math, copy
 
 class RGB(namedtuple('RGB', ['r', 'g', 'b'], defaults=[0, 0, 0])):
 
@@ -24,20 +25,54 @@ class RGB(namedtuple('RGB', ['r', 'g', 'b'], defaults=[0, 0, 0])):
 
 
 class ImageWork:
-    
     def __init__(self,matrix, shape) -> None:
         self.matrix = matrix
-        self.shape = shape
-        #行, 列 を引数にとり、matrixを初期化する。 shapeに行数と列数を記録する
-        pass
+        self.shape = shape #shapeは(行, 列)
 
-    def rectangle_fill(self):
+    def rectangle_fill(self, start, end, color:RGB):
         #左上の座標, 右下の座標, RGB を引数にとり、長方形の中を全てRGBの値に更新する
-        pass
+        new_matrix = copy.deepcopy(self.matrix)
+        row_start = min(start[0], end[0])
+        row_end = max(start[0], end[0])
+        col_start = min(start[1], end[1])
+        col_end = max(start[1], end[1])
+        for row in range(row_start, row_end+1):
+            new_matrix[row][col_start:col_end+1] = [color for i in range(col_start, col_end+1)]
+        
+        return ImageWork(new_matrix, self.shape)
 
-    def draw_straight(self):
+    def draw_straight(self, start, end, color:RGB):
         #始点, 終点, RGB を引数にとり、直線上の値をRGBに置き換える
-        pass
+        new_matrix = copy.deepcopy(self.matrix)
+        row_start = min(start[0], end[0])
+        row_end = max(start[0], end[0])
+        col_start = min(start[1], end[1])
+        col_end = max(start[1], end[1])
+        row_distance = row_end+1 - row_end
+        col_distance = col_end+1 - col_start
+
+        if row_distance < col_distance:
+            col_idx = float(col_start)
+            for row in range(row_start, row_end+1):
+                draw_range = col_idx + (col_distance / row_distance)
+                for col in range(int(col_idx), math.ceil(draw_range)):
+                    new_matrix[row][col] = color
+                col_idx = draw_range
+
+        elif row_distance == col_distance:
+            for row in range(row_start, row_end+1):
+                for col in range(col_start, col_end+1):
+                    new_matrix[row][col] = color
+
+        else:
+            row_idx = float(row_start)
+            for col in range(col_start, col_end+1):
+                draw_range = row_idx + (row_distance / col_distance)
+                for row in range(int(row_idx), math.ceil(draw_range)):
+                    new_matrix[row][col] = color
+                row_idx = draw_range
+
+        return new_matrix
 
 
 

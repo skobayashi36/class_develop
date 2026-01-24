@@ -5,7 +5,8 @@ def image_output(imageWorkObject:ImageWork, path:str): # (1.
     matrix = imageWorkObject.matrix # (2.
     shape = imageWorkObject.shape
 
-    img = Image.new("RGB", shape) # (3.
+    #shapeは(行数, 列数)でデータを保存するが、Pillowのnew関数は(幅, 高さ)を期待するので順番を入れ替えた
+    img = Image.new("RGB", (shape[1], shape[0])) # (3.
 
     # height = len(matrix)
     # width = len(matrix[0])
