@@ -36,8 +36,8 @@ class ImageWork:
         row_end = max(start[0], end[0])
         col_start = min(start[1], end[1])
         col_end = max(start[1], end[1])
-        for row in range(row_start, row_end+1):
-            new_matrix[row][col_start:col_end+1] = [color for i in range(col_start, col_end+1)]
+        for row in range(row_start, row_end):
+            new_matrix[row][col_start:col_end] = [color for i in range(col_start, col_end)]
         
         return ImageWork(new_matrix, self.shape)
 
