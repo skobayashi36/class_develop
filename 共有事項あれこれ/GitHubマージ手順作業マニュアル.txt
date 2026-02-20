@@ -1,0 +1,22 @@
+	[自分のPCで作成した更新をマージしたい時]
+1, GitHub Desktopの左上の[Current repository]が更新したいリポジトリの名前になっていることを確認する。
+
+2, GitHub Desktopの左下の[Summary(required)]に更新内容をざっくり書く。必要があればその下の[Description]により詳細な説明を書く。
+
+3, さらにその下の[Commit n files to develop]ボタンを押す。
+
+4, WebのGitHubに自分のアカウントでログインし、[Sync fork]ボタンを押す。そうすると[Update branch]というボタンが出てくるので、クリックして管理者側の更新を自分のリポジトリに反映する。
+
+5, Github Desktopに戻って上の方にある[Fetch origin]または[Pull origin]を押す。
+
+6, 管理者側の更新と自分の更新でコンフリクト(更新内容で行がかぶっている場合など)が発生した場合、[Conflicts]と警告が出るので[Open in Visual Studio Code]をクリックしてVSCodeを開く。
+
+7, <<<<<<HEAD等といってわかりやすく編集するべき部分を強調してくれるので、その強調するために追加された行を全て削除して、自分側の追記内容と管理者側の追記内容が両方残るように編集する。
+
+8, GitHub Desktopに戻り、解消されたことを確認して [Commit merge]（または再度Commit）を押す。
+
+9, 上の方にある[Push origin]ボタンを押す。
+
+10, Webで自分のアカウントを開くと[Contribute]または[Compare & pull request]と表示されるのでクリックする。
+
+11, 内容を確認し、[Create pull request] ボタンを押して完了。
